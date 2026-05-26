@@ -154,43 +154,6 @@ Then run:
 python inference.py
 ```
 
-The script saves restored images to `OUTPUT_FOLDER` and reports SAR-oriented metrics such as DRSR and entropy. If clean references are provided, it also reports PSNR, SSIM, MAE, and RMSE.
-
-## Ablation Experiments
-
-Ablation code is located in `ablation_experiments/`.
-
-First edit:
-
-```text
-ablation_experiments/hardcoded_config.py
-```
-
-Then run the desired entry script:
-
-```bash
-python ablation_experiments/train_full.py
-python ablation_experiments/train_no_fsas.py
-python ablation_experiments/train_no_fft.py
-python ablation_experiments/train_no_mim_pretrain.py
-python ablation_experiments/train_no_mask_weight.py
-python ablation_experiments/train_no_mask_condition.py
-```
-
-Inference scripts are also provided:
-
-```bash
-python ablation_experiments/infer_full.py
-python ablation_experiments/infer_no_fsas.py
-python ablation_experiments/infer_no_fft.py
-python ablation_experiments/infer_no_mim_pretrain.py
-python ablation_experiments/infer_no_mask_weight.py
-python ablation_experiments/infer_no_mask_condition.py
-python ablation_experiments/infer_no_release.py
-```
-
-See `ablation_experiments/README.md` for the full ablation table and direct-run instructions.
-
 ## Model Input and Output
 
 During fine-tuning and inference, the denoiser input is formed as:
@@ -201,14 +164,6 @@ During fine-tuning and inference, the denoiser input is formed as:
 
 For single-channel SAR images, this gives a 3-channel input tensor. The U-Net predicts the diffusion noise, and the DDPM reverse process produces the restored SAR image.
 
-## Metrics
-
-The repository includes:
-
-- `DRSR`: directional RFI suppression ratio for stripe-related spectral suppression.
-- `Entropy`: auxiliary SAR-oriented statistic.
-- `PSNR`, `SSIM`, `MAE`, `RMSE`: full-reference metrics for paired or semi-simulated evaluation.
-- Legacy compatibility metrics such as `ENL` and `EPI`.
 
 ## Notes
 
@@ -216,7 +171,6 @@ The repository includes:
 - The released implementation is image-domain and uses single-channel SAR amplitude images. It does not take complex SLC phase data as model input.
 - Mask files can be produced by external RFI segmentation methods, traditional detectors, or saved manually as `.pt` or `.png` files.
 - DDPM inference with 1000 steps is computationally heavier than deterministic CNN restoration. It is more suitable for offline high-fidelity restoration.
-- `model/evs.py` is kept as an optional experimental module and may require `mamba-ssm`; the default U-Net uses `model/fsas.py` and does not require it.
 
 ## Citation
 
