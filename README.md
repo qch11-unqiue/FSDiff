@@ -25,10 +25,8 @@ Code: https://github.com/qch11-unqiue/FSDiff
 |-- model/
 |   |-- unet.py                     # diffusion U-Net backbone
 |   |-- fsas.py                     # Frequency Spatial Attention System
-|   `-- evs.py                      # optional/experimental module
 |-- ablation_experiments/
 |   |-- README.md                   # ablation-specific instructions
-|   |-- hardcoded_config.py         # shared ablation paths and hyperparameters
 |   |-- train_*.py                  # ablation training entry points
 |   `-- infer_*.py                  # ablation inference entry points
 |-- train_mim_new.py                # Strip-MIM pretraining
@@ -36,7 +34,6 @@ Code: https://github.com/qch11-unqiue/FSDiff
 |-- inference.py                    # batch inference and metric calculation
 |-- mask2pt.py                      # mask conversion utility
 |-- metrics.py                      # DRSR, entropy, PSNR, SSIM, MAE, RMSE, etc.
-`-- table_v_complexity_hardcoded.py # complexity/statistics helper
 ```
 
 ## Environment
